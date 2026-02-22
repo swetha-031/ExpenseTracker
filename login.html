@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login - Expense Tracker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="auth-container">
+    <div class="auth-card">
+      <h2>Login</h2>
+      <input type="email" id="login-email" placeholder="Enter Email" required>
+      <input type="password" id="login-password" placeholder="Enter Password" required>
+      <button id="login-btn">Login</button>
+      <p>Don't have an account? <a href="register.html">Register</a></p>
+    </div>
+  </div>
+
+  <!-- Firebase Auth -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+    import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyB9nMScTfZ-1x1URK_u97cPE96nlOU-zvw",
+      authDomain: "expense-tracker-afc24.firebaseapp.com",
+      projectId: "expense-tracker-afc24",
+      storageBucket: "expense-tracker-afc24.firebasestorage.app",
+      messagingSenderId: "83941365376",
+      appId: "1:83941365376:web:6d7952bb0dc1f37fc9b865",
+      measurementId: "G-WXG80M1DJP"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    document.getElementById("login-btn").addEventListener("click", () => {
+      const email = document.getElementById("login-email").value;
+      const password = document.getElementById("login-password").value;
+
+      signInWithEmailAndPassword(auth, email, password)
+        .then(() => {
+          window.location.href = "dashboard.html";
+        })
+        .catch(err => alert("Login Failed: " + err.message));
+    });
+  </script>
+</body>
+</html>

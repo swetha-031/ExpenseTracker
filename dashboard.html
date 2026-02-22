@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Expense Tracker - Dashboard</title>
+  <link rel="stylesheet" href="style.css"/>
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- EmailJS SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+</head>
+<body>
+  <!-- 🔹 Top Header -->
+  <header>
+    <h2 id="profile-name">Welcome 👋</h2>
+    <img id="profile-pic" alt="Profile Picture"/>
+  </header>
+
+  <!-- 🔹 Main Dashboard Layout -->
+  <div class="container">
+    
+    <!-- Left Panel: Salary & Budget + Chatbot -->
+    <div class="card">
+      <h3>Salary & Budget</h3>
+      <input type="number" id="salary-input" placeholder="Enter Salary"/>
+      <input type="number" id="budget-input" placeholder="Enter Budget"/>
+      <button id="add-salary-btn">Save</button>
+      <h4>Total: <span id="total-amount">0</span></h4>
+      <h4>Balance: <span id="balance-amount">0</span></h4>
+
+      <!-- 🔹 Chatbot -->
+      <h3 style="margin-top:20px;">💬 Chatbot</h3>
+      <div id="chatbot-window" style="height:200px; overflow-y:auto; border:1px solid #ccc; border-radius:6px; padding:8px; margin-bottom:8px; background:#fafafa;"></div>
+      <input type="text" id="chatbot-input" placeholder="Ask something..."/>
+      <button id="chatbot-send">Send</button>
+    </div>
+
+    <!-- Center Panel: Expenses -->
+    <div class="card">
+      <h3>Add Expense</h3>
+      <select id="category-select">
+        <option value="Food">Food</option>
+        <option value="Transport">Transport</option>
+        <option value="Shopping">Shopping</option>
+        <option value="Bills">Bills</option>
+        <option value="Entertainment">Entertainment</option>
+        <option value="Health">Health</option>
+        <option value="Education">Education</option>
+        <option value="Travel">Travel</option>
+        <option value="Groceries">Groceries</option>
+        <option value="Rent">Rent</option>
+        <option value="Investments">Investments</option>
+        <option value="Savings">Savings</option>
+        <option value="Subscriptions">Subscriptions</option>
+        <option value="Others">Others</option>
+      </select>
+
+      <input type="number" id="amount-input" placeholder="Enter Amount"/>
+      <input type="date" id="date-input"/>
+      <button id="add-btn">Add Expense</button>
+
+      <input type="text" id="search-input" placeholder="Search expenses"/>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Category</th>
+            <th>Amount</th>
+            <th>Date</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="expense-table-body"></tbody>
+      </table>
+    </div>
+
+    <!-- Right Panel: Reminders + Charts -->
+    <div class="card">
+      <h3>Email Reminder</h3>
+      <input type="email" id="user-email" placeholder="Enter your email"/>
+      <select id="reminder-type">
+        <option value="daily">Daily</option>
+        <option value="weekly">Weekly</option>
+      </select>
+      <button id="send-reminder">Send Reminder</button>
+      <p id="email-status"></p>
+
+      <canvas id="bar-chart"></canvas>
+      <canvas id="expense-chart"></canvas>
+
+      <button onclick="logout()">Logout</button>
+    </div>
+  </div>
+
+  <!-- Reports Button -->
+  <button onclick="window.location.href='reports.html'" class="btn">Reports</button>
+
+  <!-- Firebase + Main Logic -->
+  <script type="module" src="5.js"></script>
+</body>
+</html>

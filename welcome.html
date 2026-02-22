@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Personal Expense Tracker - Welcome</title>
+  <style>
+    body {
+      background: linear-gradient(90deg, #f9f9f9 60%, #d6f5e3 100%);
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .center-box {
+      max-width: 480px;
+      margin: 100px auto;
+      padding: 40px 32px;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(20,96,77,0.10);
+      text-align: center;
+    }
+    h1 {
+      color: #189d66;
+      margin-bottom: 16px;
+      font-size: 2em;
+      font-weight: bold;
+    }
+    p {
+      color: #444;
+      font-size: 1.13em;
+      margin-bottom: 36px;
+    }
+    .btn-group {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .btn {
+      background: #189d66;
+      color: #fff;
+      border: none;
+      padding: 14px 32px;
+      font-size: 1em;
+      border-radius: 8px;
+      cursor: pointer;
+      min-width: 190px;
+      box-shadow: 0 2px 8px -6px #189d66;
+      transition: background 0.18s;
+    }
+    .btn:hover {
+      background: #176e4f;
+    }
+  </style>
+</head>
+<body>
+  <div class="center-box">
+    <h1>Personal Expense Tracker</h1>
+    <p>"Your wealth is your health — let's track it smartly!"</p>
+    <div class="btn-group">
+      <button class="btn" onclick="window.location.href='register.html'">New Register? Login</button>
+      <button class="btn" onclick="window.location.href='login.html'">Already Registered? Sign In</button>
+    </div>
+  </div>
+</body>
+</html>

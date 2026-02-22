@@ -1,0 +1,199 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f7fa;
+  color: #333;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 🔹 Header */
+header {
+  background: #4caf50;
+  color: #fff;
+  padding: 15px 25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header h2 {
+  font-size: 22px;
+}
+
+header img {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+}
+
+/* 🔹 Main Layout */
+.container {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: 20px;
+  padding: 20px;
+  flex: 1;
+}
+
+/* 🔹 Cards */
+.card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+}
+
+.card h3 {
+  margin-bottom: 10px;
+  color: #4caf50;
+}
+
+/* 🔹 Input + Button */
+input, select, button {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+button {
+  background: #4caf50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+button:hover {
+  background: #43a047;
+}
+
+/* 🔹 Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+table th, table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+table th {
+  background: #4caf50;
+  color: white;
+}
+
+/* 🔹 Charts */
+canvas {
+  margin-top: 15px;
+  max-width: 100%;
+}
+
+/* 🔹 Login & Register Page Styles */
+.auth-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f4f7fa;
+}
+
+.auth-card {
+  background: #fff;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  width: 350px;
+  text-align: center;
+}
+
+.auth-card h2 {
+  margin-bottom: 20px;
+  color: #4caf50;
+}
+
+.auth-card input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+.auth-card button {
+  width: 100%;
+  padding: 12px;
+  background: #4caf50;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.auth-card button:hover {
+  background: #43a047;
+}
+
+.auth-card p {
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+/* 🔹 Chatbot Styles */
+#chatbot-window {
+  height: 200px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  background: #fafafa;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.chat-message {
+  margin: 6px 0;
+  padding: 8px 10px;
+  border-radius: 6px;
+  max-width: 80%;
+}
+
+.chat-user {
+  background: #4caf50;
+  color: white;
+  align-self: flex-end;
+  margin-left: auto;
+}
+
+.chat-bot {
+  background: #e0e0e0;
+  color: #333;
+  align-self: flex-start;
+  margin-right: auto;
+}
+
+#chatbot-input {
+  width: calc(100% - 90px);
+  display: inline-block;
+}
+
+#chatbot-send {
+  width: 80px;
+  display: inline-block;
+  margin-left: 5px;
+}
+

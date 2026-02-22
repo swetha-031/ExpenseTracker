@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Expense Reports</title>
+    <link rel="stylesheet" href="style.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <style>
+        /* General page styling */
+        body {
+            background-color: #f4f7fa;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Container for the report content */
+        .reports-container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        /* Header with Title and Salary */
+        .report-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 15px;
+        }
+
+        .report-header h1 {
+            margin: 0;
+            color: #333;
+        }
+
+        .report-header h3 {
+            margin: 0;
+            color: #4caf50;
+            font-size: 1.2em;
+        }
+
+        /* Table styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 25px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #4caf50;
+            color: white;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        /* Summary section for totals */
+        .report-summary {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            background-color: #f4f7fa;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+
+        .report-summary h3 {
+            margin: 0;
+            font-size: 1.1em;
+            color: #555;
+        }
+        
+        .report-summary h3 span {
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* Container for action buttons */
+        .report-actions {
+            display: flex;
+            justify-content: center;
+            gap: 15px; /* Adds space between buttons */
+            margin-top: 20px;
+        }
+
+        /* Shared button styles */
+        .report-actions button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        
+        .report-actions button:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Download buttons styling */
+        #pdfBtn, #excelBtn {
+            background-color: #4caf50;
+            color: white;
+        }
+
+        /* Logout button styling */
+        #logoutBtn {
+            background-color: #f44336;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<div class="reports-container">
+
+    <div class="report-header">
+        <h1>Expense Reports</h1>
+        <h3>Salary: ₹<span id="salary-val">0</span></h3>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Category</th>
+                <th>Amount</th>
+            </tr>
+        </thead>
+        <tbody id="report-table-body"></tbody>
+    </table>
+
+    <div class="report-summary">
+        <h3>Total Expenses: ₹<span id="total-exp-val">0</span></h3>
+        <h3>Remaining Budget: ₹<span id="rem-balance-val">0</span></h3>
+    </div>
+
+    <div class="report-actions">
+        <button id="pdfBtn">Download PDF</button>
+        <button id="excelBtn">Download Excel</button>
+        <button id="logoutBtn">Logout</button>
+    </div>
+
+</div>
+
+<script type="module" src="reports.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Expense Tracker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h2>Expense Tracker</h2>
+
+  <!-- Salary & Budget -->
+  <input type="number" id="salary-input" placeholder="Enter Salary">
+  <input type="number" id="budget-input" placeholder="Enter Budget">
+  <button id="add-salary-btn">Save Salary & Budget</button>
+
+  <!-- Add Expense -->
+  <select id="category-select">
+    <option>Food</option>
+    <option>Transport</option>
+    <option>Shopping</option>
+    <option>Other</option>
+  </select>
+  <input type="number" id="amount-input" placeholder="Enter Amount">
+  <input type="date" id="date-input">
+  <button id="add-btn">Add Expense</button>
+
+  <!-- Expense Table -->
+  <table border="1">
+    <thead>
+      <tr>
+        <th>Category</th>
+        <th>Amount</th>
+        <th>Date</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody id="expense-table-body"></tbody>
+  </table>
+
+  <!-- Summary -->
+  <p>Total: <span id="total-amount">0</span></p>
+  <p>Balance: <span id="balance-amount">0</span></p>
+  <p id="notification"></p>
+
+  <!-- Search -->
+  <input type="text" id="search-input" placeholder="Search by Category">
+
+  <!-- Charts -->
+  <canvas id="bar-chart"></canvas>
+  <canvas id="expense-chart"></canvas>
+
+  <!-- Email Reminder -->
+  <h3>Email Reminder</h3>
+  <input type="email" id="user-email" placeholder="Enter your email">
+  <select id="reminder-type">
+    <option value="daily">Daily</option>
+    <option value="weekly">Weekly</option>
+  </select>
+  <button id="send-reminder">Send Reminder</button>
+  <p id="email-status"></p>
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- EmailJS -->
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+
+  <!-- Firebase & App Logic -->
+  <script type="module" src="5.js"></script>
+</body>
+</html>

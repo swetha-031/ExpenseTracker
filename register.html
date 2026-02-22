@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Register - Expense Tracker</title>
+<style>
+  body {
+    background: linear-gradient(90deg, #f9f9f9 60%, #d6f5e3 100%);
+    font-family: Arial, sans-serif;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .container {
+    background-color: #fff;
+    border-radius: 16px;
+    padding: 40px 30px;
+    width: 90%;
+    max-width: 380px;
+    box-shadow: 0 8px 24px rgb(20 96 77 / 10%);
+    text-align: center;
+    box-sizing: border-box;
+  }
+  h2 {
+    margin-bottom: 32px;
+    color: #189d66;
+    font-size: 2.2rem;
+    font-weight: 700;
+  }
+  label {
+    display: block;
+    text-align: left;
+    font-weight: 600;
+    margin: 12px 0 6px 0;
+    color: #333;
+    font-size: 1rem;
+  }
+  input[type="email"],
+  input[type="password"] {
+    width: 100%;
+    padding: 14px 12px;
+    font-size: 1rem;
+    border: 1px solid #c5e7d6;
+    border-radius: 8px;
+    box-sizing: border-box;
+    margin-bottom: 18px;
+    outline-offset: 2px;
+    transition: border-color 0.2s;
+  }
+  input[type="email"]:focus,
+  input[type="password"]:focus {
+    border-color: #189d66;
+  }
+  .btn-group {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 24px;
+  }
+  button {
+    flex: 1;
+    padding: 14px 0;
+    border-radius: 8px;
+    border: none;
+    font-weight: 700;
+    font-size: 1.1rem;
+    cursor: pointer;
+    color: white;
+    background-color: #189d66;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 3px 14px rgba(24, 157, 102, 0.3);
+  }
+  button:hover {
+    background-color: #176e4f;
+  }
+  a {
+    color: #189d66;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <h2>Register</h2>
+    <form>
+      <label for="reg-email">Email</label>
+      <input type="email" id="reg-email" placeholder="Enter your email" required />
+      <label for="reg-password">Password</label>
+      <input type="password" id="reg-password" placeholder="Enter password" required />
+      <div class="btn-group">
+        <button id="register-btn" type="button">Register</button>
+        <button id="login-btn" type="button" onclick="window.location.href='index.html'">Login</button>
+      </div>
+    </form>
+  </div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+    import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyB9nMScTfZ-1x1URK_u97cPE96nlOU-zvw",
+      authDomain: "expense-tracker-afc24.firebaseapp.com",
+      projectId: "expense-tracker-afc24",
+      storageBucket: "expense-tracker-afc24.firebasestorage.app",
+      messagingSenderId: "83941365376",
+      appId: "1:83941365376:web:6d7952bb0dc1f37fc9b865"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    document.getElementById("register-btn").addEventListener("click", () => {
+      const email = document.getElementById("reg-email").value;
+      const password = document.getElementById("reg-password").value;
+
+      createUserWithEmailAndPassword(auth, email, password)
+        .then(() => {
+          alert("✅ Registered Successfully! Please login.");
+          window.location.href = "index.html";
+        })
+        .catch((err) => alert("Registration Failed: " + err.message));
+    });
+  </script>
+</body>
+</html>

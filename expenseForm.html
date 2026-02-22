@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Expense Tracker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            width: 300px;
+        }
+        input, button {
+            margin: 10px 0;
+            padding: 8px;
+            font-size: 14px;
+        }
+        input[type="text"].invalid {
+            border: 2px solid red;
+        }
+    </style>
+</head>
+<body>
+
+<form id="expenseForm">
+    <label for="expenseName">Expense Name:</label>
+    <input type="text" id="expenseName" placeholder="Enter expense name" required />
+
+    <label for="expenseAmount">Amount:</label>
+    <input type="number" id="expenseAmount" placeholder="Enter amount" required />
+
+    <label for="expenseCategory">Category:</label>
+    <input type="text" id="expenseCategory" placeholder="Enter category" required />
+
+    <label for="expenseDate">Date:</label>
+    <input type="text" id="expenseDate" placeholder="YYYY-MM-DD" required />
+
+    <button type="submit">Add Expense</button>
+</form>
+
+<script>
+    // Function to get today’s date in YYYY-MM-DD format
+    function getTodayDate() {
+        const today = new Date();
+        const yyyy = today.getFullYear();
+        let mm = today.getMonth() + 1; // Months start at 0
+        let dd = today.getDate();
+
+        if (mm < 10) mm = '0' + mm;
+        if (dd < 10) dd = '0' + dd;
+
+        return `${yyyy}-${mm}-${dd}`;
+    }
+
+    // Set default date in input
+    const dateInput = document.getElementById('expenseDate');
+    dateInput.value = getTodayDate();
+
+    // Validate YYYY-MM-DD format
+    dateInput.addEventListener('input', function() {
+        const regex = /^\d{4}-\d{2}-\d{2}$/;
+        if (!regex.test(this.value)) {
+            this.classList.add('invalid');
+        } else {
+            this.classList.remove('invalid');
+        }
+    });
+
+    // Handle form submission
+    const form = document.getElementById('expenseForm');
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const name = document.getElementById('expenseName').value;
+        const amount = parseFloat(document.getElementById('expenseAmount').value);
+        const category = document.getElementById('expenseCategory').value;
+        const date = dateInput.value;
+
+        // Validate date format
+        const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
+        if (!dateRegex.test(date)) {
+            alert('Please enter date in YYYY-MM-DD format.');
+            return;
+        }
+
+        // Example: Save to Firestore (pseudo code, replace with your Firebase logic)
+        console.log('Expense Added:', { name, amount, category, date });
+        alert('Expense added successfully!');
+
+        // Reset form fields (except date)
+        document.getElementById('expenseName').value = '';
+        document.getElementById('expenseAmount').value = '';
+        document.getElementById('expenseCategory').value = '';
+        dateInput.value = getTodayDate(); // Reset to today
+    });
+</script>
+
+</body>
+</html>
